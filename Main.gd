@@ -3,10 +3,10 @@ extends Control
 
 onready var timer = get_node("Timer")
 onready var audio_stream = get_node("AudioStreamPlayer")
-onready var label_clock = get_node("MarginContainer/VBoxContainer/LabelClock")
-onready var progress_bar = get_node("MarginContainer/VBoxContainer/ProgressBar")
-onready var button_start = get_node("MarginContainer/VBoxContainer/ControlButtons/StartButton")
-onready var button_interrupted = get_node("MarginContainer/VBoxContainer/ControlButtons/InterruptedButton")
+onready var label_clock = get_node("MarginContainer/ClockControls/LabelClock")
+onready var progress_bar = get_node("MarginContainer/ClockControls/ProgressBar")
+onready var button_start = get_node("MarginContainer/ClockControls/ControlButtons/StartButton")
+onready var button_interrupted = get_node("MarginContainer/ClockControls/ControlButtons/InterruptedButton")
 
 enum state {SESSION, SHORT_BREAK, LONG_BREAK}
 
@@ -37,7 +37,10 @@ func _ready():
 
 func _physics_process(delta):
 	if timer.is_stopped() == false:
-		label_clock.text = String(int(timer.get_time_left()))
+		var minutes = int(timer.get_time_left()) / 60
+		var seconds = int(timer.get_time_left()) % 60
+		var time_text = "%d:%d" % [minutes, seconds]
+		label_clock.text = time_text
 
 
 func _on_InterruptedButton_pressed():
@@ -94,7 +97,7 @@ func set_session_count(value: int):
 func set_timer_state(time: int, text: String, state: int):
 	timer.set_wait_time(time)
 	button_start.set_text(text)
-	label_clock.text = String(time)
+	label_clock.text = String(time / 60)
 	button_start.set_disabled(false)
 	previous_state = current_state
 	current_state = state

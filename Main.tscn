@@ -44,7 +44,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="ClockControls" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 380.0
 margin_bottom = 580.0
 alignment = 2
@@ -52,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelClock" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="LabelClock" type="Label" parent="MarginContainer/ClockControls"]
 margin_right = 380.0
 margin_bottom = 513.0
 size_flags_horizontal = 3
@@ -62,7 +62,7 @@ text = "0000"
 align = 1
 valign = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/ClockControls"]
 margin_top = 517.0
 margin_right = 380.0
 margin_bottom = 532.0
@@ -72,13 +72,13 @@ size_flags_vertical = 1
 max_value = 4.0
 percent_visible = false
 
-[node name="SwitchViewButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="SwitchViewButtons" type="HBoxContainer" parent="MarginContainer/ClockControls"]
 margin_top = 536.0
 margin_right = 380.0
 margin_bottom = 556.0
 alignment = 1
 
-[node name="TimerButton" type="Button" parent="MarginContainer/VBoxContainer/SwitchViewButtons"]
+[node name="TimerButton" type="Button" parent="MarginContainer/ClockControls/SwitchViewButtons"]
 margin_right = 188.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -87,7 +87,7 @@ toggle_mode = true
 pressed = true
 text = "Timer"
 
-[node name="GraphButton" type="Button" parent="MarginContainer/VBoxContainer/SwitchViewButtons"]
+[node name="GraphButton" type="Button" parent="MarginContainer/ClockControls/SwitchViewButtons"]
 margin_left = 192.0
 margin_right = 380.0
 margin_bottom = 20.0
@@ -95,18 +95,18 @@ size_flags_horizontal = 3
 disabled = true
 text = "Graph"
 
-[node name="ControlButtons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="ControlButtons" type="HBoxContainer" parent="MarginContainer/ClockControls"]
 margin_top = 560.0
 margin_right = 380.0
 margin_bottom = 580.0
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/ControlButtons"]
+[node name="StartButton" type="Button" parent="MarginContainer/ClockControls/ControlButtons"]
 margin_right = 188.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Start"
 
-[node name="InterruptedButton" type="Button" parent="MarginContainer/VBoxContainer/ControlButtons"]
+[node name="InterruptedButton" type="Button" parent="MarginContainer/ClockControls/ControlButtons"]
 margin_left = 192.0
 margin_right = 380.0
 margin_bottom = 20.0
@@ -114,5 +114,5 @@ size_flags_horizontal = 3
 text = "Interrupted"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlButtons/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ControlButtons/InterruptedButton" to="." method="_on_InterruptedButton_pressed"]
+[connection signal="pressed" from="MarginContainer/ClockControls/ControlButtons/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="MarginContainer/ClockControls/ControlButtons/InterruptedButton" to="." method="_on_InterruptedButton_pressed"]
